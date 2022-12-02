@@ -1,0 +1,30 @@
+<div class="main-form">
+  <div class="title">
+      <span>Secret Santa...!</span>
+  </div>
+
+  <div class="selection-area">
+    <div class="squares"  *ngIf="!isSelected">
+      <button mat-raised-button class="square" *ngFor="let num of numArray" (click)="click(num)">
+        <span>{{num}}</span>
+      </button>
+
+    </div>
+
+    <div class="result" *ngIf="isSelected">
+
+      <div class="result-card">
+<div class="details">
+  <span><strong>Name : </strong> Test One</span>
+  <span><strong>Name : </strong> Test One</span>
+  <span><strong>Name : </strong> Test One</span>
+</div>
+
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
