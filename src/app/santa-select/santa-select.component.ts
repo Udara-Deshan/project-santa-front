@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-santa-select',
@@ -7,16 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SantaSelectComponent implements OnInit {
 
-  constructor() { }
+  numArray = Array.from({length: 115}, (_, index) => index + 1);
+  isSelected = false;
+  selected = 0;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-numArray=Array.from({length: 115}, (_, index) => index + 1);
-  isSelected=false;
-selected=0;
 
-  click(num:number) {
-    this.selected=num;
-    this.isSelected=true;
+  click(num: number) {
+    this.selected = num;
+    this.isSelected = true;
   }
 }
