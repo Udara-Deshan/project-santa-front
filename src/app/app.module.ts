@@ -12,13 +12,20 @@ import {MatButtonModule} from "@angular/material/button";
 import { LogComponent } from './log/log.component';
 import { SantaSelectComponent } from './santa-select/santa-select.component';
 import { SnowComponent } from './snow/snow.component';
+import { ReciverComponent } from './reciver/reciver.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { MatDialogModule} from "@angular/material/dialog";
+import { GifterDialogPopUpComponent } from './gifter-dialog-pop-up/gifter-dialog-pop-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogComponent,
     SantaSelectComponent,
-    SnowComponent
+    SnowComponent,
+    ReciverComponent,
+    GifterDialogPopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,10 @@ import { SnowComponent } from './snow/snow.component';
     MatIconModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

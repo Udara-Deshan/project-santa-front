@@ -1,29 +1,29 @@
-<div class="main-form">
+<div class="main-form" *ngIf="!isSelected">
   <div class="title">
-      <span>Secret Santa...!</span>
+      <span>{{santaService.currentSantaName}} Select your Gifter...!</span>
   </div>
 
   <div class="selection-area">
-    <div class="squares"  *ngIf="!isSelected">
+    <div class="squares"  >
       <button mat-raised-button class="square grow" *ngFor="let num of numArray" (click)="click(num)">
         <span>{{num}}</span>
       </button>
 
     </div>
 
-    <div class="result" *ngIf="isSelected">
+<!--    <div class="result" *ngIf="isSelected">-->
 
-      <div class="result-card">
-<div class="details">
-  <span><strong>Email : </strong> Test One</span>
-  <span><strong>Name : </strong> Test One</span>
-</div>
-
-
+<!--      <div class="result-card">-->
+<!--<div class="details">-->
+<!--  <span><strong>Email : </strong> Test One</span>-->
+<!--  <span><strong>Name : </strong> Test One</span>-->
+<!--</div>-->
 
 
-      </div>
 
-    </div>
+
+<!--      </div>-->
+
+<!--    </div>-->
   </div>
 </div>

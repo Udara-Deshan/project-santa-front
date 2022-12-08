@@ -192,10 +192,10 @@ class Flake {
   }
 
   skull() {
-    this.mx = Math.sign(this.mx) * 6;
-    this.my = -6;
-    this.nativeElement.innerHTML = '&#9760;';
-    this.nativeElement.style.color = 'darkred';
+    // this.mx = Math.sign(this.mx) * 6;
+    // this.my = -6;
+    // this.nativeElement.innerHTML = '&#9760;';
+    // this.nativeElement.style.color = 'darkred';
   }
 
 }
