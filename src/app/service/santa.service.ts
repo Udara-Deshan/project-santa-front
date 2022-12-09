@@ -7,10 +7,19 @@ import {HttpClient} from "@angular/common/http";
 export class SantaService {
   private _currentSantaNo!: string;
   private _currentSantaName!:string;
+  private _currentSantaInitName!:string;
   private _currentGifterName!:string;
   private _routeState=false;
   private _selectState=false;
 
+
+  get currentSantaInitName(): string {
+    return this._currentSantaInitName;
+  }
+
+  set currentSantaInitName(value: string) {
+    this._currentSantaInitName = value;
+  }
 
   get selectState(): boolean {
     return this._selectState;

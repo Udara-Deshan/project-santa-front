@@ -13,10 +13,11 @@ import { LogComponent } from './log/log.component';
 import { SantaSelectComponent } from './santa-select/santa-select.component';
 import { SnowComponent } from './snow/snow.component';
 import { ReciverComponent } from './reciver/reciver.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { MatDialogModule} from "@angular/material/dialog";
 import { GifterDialogPopUpComponent } from './gifter-dialog-pop-up/gifter-dialog-pop-up.component';
+import {AlertInterceptor} from "./errors/alert.interceptor";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { GifterDialogPopUpComponent } from './gifter-dialog-pop-up/gifter-dialog
     MatProgressSpinnerModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AlertInterceptor, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {SantaService} from "../service/santa.service";
 import {ApiService} from "../service/api.service";
@@ -20,33 +20,44 @@ apiloading=false;
 
   ngOnInit(): void {
     this.openForm = this.fb.group({
-      surName: new FormControl(),
-      memberNumber: new FormControl()
+      Name: new FormControl('',Validators.required),
+      memberNumber: new FormControl('',Validators.required)
     });
   }
 
   onSubmit() {
-    this.apiloading=true;
-    this.apiService.log(this.openForm.get('memberNumber')?.value).subscribe(res=>{
-      this.apiloading=false;
-      console.log(res)
-      if (res.code==201 && res.data.gifterName!=null){
-        console.log("dd")
-        this.santaService.routeState=true;
-        this.santaService.selectState=true;
-        this.santaService.currentSantaNo=this.openForm.get('memberNumber')?.value;
-        this.santaService.currentSantaName=res.data.fullName;
-        this.santaService.currentGifterName=res.data.gifterName;
-        this.router.navigate(['select-you-receiver'])
-      }else if(res.code==201&& res.data.gifterName==null){
-        console.log("ss")
-        this.santaService.routeState=true;
+    console.log(this.openForm.get('Name')?.value)
 
-        this.santaService.currentSantaNo=this.openForm.get('memberNumber')?.value;
-        this.santaService.currentSantaName=res.data.fullName;
-        this.router.navigate(['select-you-receiver'])
-      }
-    },error => this.apiloading=false)
+    if (this.openForm.valid){
+      this.apiloading=true;
+      this.apiService.log(this.openForm.get('memberNumber')?.value,this.openForm.get('Name')?.value).subscribe(res=>{
+        this.apiloading=false;
+
+        console.log(res)
+        if (res.code==201 && res.data.gifterName!=null){
+          console.log("dd")
+          this.santaService.routeState=true;
+          this.santaService.selectState=true;
+
+          this.santaService.currentSantaNo=this.openForm.get('memberNumber')?.value;
+          this.santaService.currentSantaInitName=this.openForm.get('Name')?.value;
+          console.log(this.santaService.currentSantaInitName)
+          console.log(this.openForm.get('Name')?.value)
+          this.santaService.currentSantaName=res.data.fullName;
+          this.santaService.currentGifterName=res.data.gifterName;
+          this.router.navigate(['select-you-receiver'])
+        }else if(res.code==201 && res.data.gifterName==null){
+          console.log("ss")
+          this.santaService.routeState=true;
+          this.santaService.currentSantaInitName=this.openForm.get('Name')?.value;
+
+          this.santaService.currentSantaNo=this.openForm.get('memberNumber')?.value;
+          this.santaService.currentSantaName=res.data.fullName;
+          this.router.navigate(['select-you-receiver'])
+        }
+      },error => this.apiloading=false)
+
+    }
 
   }
 }

@@ -1,38 +1,47 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {SantaService} from "./santa.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private _baseUrl = 'http://localhost:8090/api/v1'
-
+  private _baseUrl = 'https://audit.controlunion.com/santa/api/v1'
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private s:SantaService
   ) {
   }
 
-  public log(memberNo: string):Observable<any> {
+  public log(memberNo: string,initName:string):Observable<any> {
+
     return this.httpClient.get(this._baseUrl,{
       params:{
-        memberNo
+        memberNo,
+        initName
+
       }
     })
   }
   public santaSelect(memberNo:string,number:number){
+    const initName=this.s.currentSantaInitName;
+
     return this.httpClient.put(this._baseUrl,{},{
       params:{
         memberNo,
-        number
+        number,
+        initName
       }
     })
   }
 
   public getSantaCount(memberNo:string){
+    const initName=this.s.currentSantaInitName;
     return this.httpClient.get(this._baseUrl+'/count',{
       params:{
-        memberNo
+        memberNo,
+        initName
       }
     })
   }
