@@ -68,7 +68,7 @@ export class SantaSelectComponent implements OnInit {
     this.apiService.santaSelect(this.santaService.currentSantaNo, num).subscribe((res: any) => {
       let matDialogRef = this.d.open(GifterDialogPopUpComponent, {
           width: '500px',
-          height: '500px',
+          height: 'auto',
         closeOnNavigation: false,
         disableClose: true,
           data: {
@@ -76,9 +76,12 @@ export class SantaSelectComponent implements OnInit {
             gifter: res.data.fullName,
           }
         }
+
       );
+
     })
 
-
+    this.isSelected=false;
+    this.santaService.selectState=false;
   }
 }
