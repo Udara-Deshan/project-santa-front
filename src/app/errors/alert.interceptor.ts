@@ -22,7 +22,7 @@ export class AlertInterceptor implements HttpInterceptor {
       }),
       catchError(err => {
         console.log(err)
-        this.errorService.handle(err.data);
+        this.errorService.handle(err.error.data);
         return throwError(err.error.message || err.statusText);
       }));  }
 }

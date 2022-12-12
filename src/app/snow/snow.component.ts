@@ -142,11 +142,11 @@ class Flake {
   ) {
     this.nativeElement = document.createElement('div');
     this.nativeElement.style.position = 'fixed';
-    this.nativeElement.style.zIndex = '5000';
+    this.nativeElement.style.zIndex = '500';
     this.nativeElement.style.cursor = 'pointer';
     this.nativeElement.style.userSelect = 'none';
-    this.nativeElement.style.padding = '1em';
-    this.nativeElement.style.fontSize = `${Math.round(10 + 20 * Math.random())}px`;
+    this.nativeElement.style.padding = '0';
+    this.nativeElement.style.fontSize = `${Math.round(5 + 10 * Math.random())}px`;
 
     this.nativeElement.addEventListener('click', () => {
 
@@ -207,7 +207,7 @@ class Score {
   constructor() {
     this.nativeElement = document.createElement('div');
     this.nativeElement.style.position = 'fixed';
-    this.nativeElement.style.zIndex = '5000';
+    this.nativeElement.style.zIndex = '500';
     this.nativeElement.style.top = '10px';
     this.nativeElement.style.left = '10px';
     this.nativeElement.style.fontSize = '36px';

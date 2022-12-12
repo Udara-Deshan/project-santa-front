@@ -3,6 +3,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {SantaService} from "../service/santa.service";
 import {ApiService} from "../service/api.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ApprovalDialogComponent} from "../dialog/approval-dialog/approval-dialog.component";
+import {ApprovalDialogConfig} from "../dialog/approval-dialog/ApprovalDialogConfig";
 
 @Component({
   selector: 'app-log',
@@ -15,7 +18,8 @@ apiloading=false;
   constructor(private fb: FormBuilder,
               private router: Router,
               private apiService: ApiService,
-              private santaService:SantaService) {
+              private santaService:SantaService,
+              private dialog:MatDialog) {
   }
 
   ngOnInit(): void {
@@ -57,6 +61,12 @@ apiloading=false;
         }
       },error => this.apiloading=false)
 
+    }else {
+      this.dialog.open(ApprovalDialogComponent, {
+        width: '350px',
+        // height: '200px',
+        data: new ApprovalDialogConfig('Error', 'Fill All the Required Filed', '')
+      });
     }
 
   }

@@ -1,7 +1,7 @@
 <div class="main-area">
   <div class="main-card">
     <div class="form-card">
-      <img src="assets/Control-Union_logo_500.png">
+      <img src="assets/santa11.jpg">
       <form [formGroup]="openForm" (submit)="onSubmit()">
         <div class="form-row">
           <mat-form-field appearance="outline">
@@ -18,7 +18,7 @@
         </div>
         <div class="btn-bar">
 <!--          <button mat-raised-button color="primary" type="submit">Submit</button>-->
-          <button  *ngIf="!apiloading" (click)="onSubmit()" mat-raised-button color="primary" type="submit">Submit</button>
+          <button  *ngIf="!apiloading"  mat-raised-button color="primary" type="submit">Submit</button>
           <button *ngIf="apiloading" color="primary" mat-button>
             <mat-spinner diameter="20"></mat-spinner>
           </button>

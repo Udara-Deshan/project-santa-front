@@ -21,10 +21,11 @@ export class AlertService {
            HttpResponse<any> | HttpProgressEvent |
            HttpUserEvent<any>): void{
     if (evt instanceof HttpResponse) {
+      console.log(evt)
       if (request.method === 'GET'){
       }else {
         if (evt.body.code === 404){
-          window.alert(evt.body.data);
+          // window.alert(evt.body.data);
         }      }
     }
   }

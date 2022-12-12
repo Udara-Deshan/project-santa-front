@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import {Router} from "@angular/router";
+import {ApiLoadingService} from "./api-loading/api-loading.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,8 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'CUSL_ProjectSanta';
-  constructor(router: Router) {
+  constructor(router: Router,
+              public apiLoadingService: ApiLoadingService) {
     router.canceledNavigationResolution = 'computed';
 
     history.pushState(null, '', location.href);

@@ -1,0 +1,6 @@
+<!--<div *ngIf="apiLoadingService.isVisible() | async" class="spinner">-->
+<!--  <mat-spinner class="loading"></mat-spinner>-->
+<!--</div>-->
+<div  class="loaderMask" *ngIf="apiLoadingService.isVisible() | async">
+  <img src="assets/loading.gif">
+</div>
