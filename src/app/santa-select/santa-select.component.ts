@@ -81,7 +81,7 @@ export class SantaSelectComponent implements OnInit {
 
     })
 
-    this.isSelected=false;
-    this.santaService.selectState=false;
+    this.isSelected=true;
+    this.santaService.selectState=true;
   }
 }
